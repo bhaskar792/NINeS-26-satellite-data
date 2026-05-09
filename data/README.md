@@ -5,6 +5,21 @@ Paper: https://drops.dagstuhl.de/storage/01oasics/oasics-vol139-nines2026/OASIcs
 
 ---
 
+## Downloading
+
+Two archives are split into 2 GB parts due to GitHub LFS limits. Reassemble before extracting:
+
+```bash
+cat measurements.tar.gz.part-* > measurements.tar.gz
+cat satellite_positions.tar.gz.part-* > satellite_positions.tar.gz
+tar -xzf measurements.tar.gz
+tar -xzf satellite_positions.tar.gz
+```
+
+The other two archives (`sat_match.tar.gz`, `obstruction_maps.tar.gz`) can be extracted directly.
+
+---
+
 ## Measurement Setup
 
 Two identical Starlink Residential dishes were co-located on a rooftop in Ithaca, NY (42.445°N, 76.480°W), approximately 6 feet apart.
@@ -79,8 +94,8 @@ Each row is one 15-second observation window in which both dishes had a detectab
 | `pi2_max_ele` | float (degrees) | |
 | `pi2_min_az` | float (degrees) | |
 | `pi2_max_az` | float (degrees) | |
-| `pi1_az_ele` | list of (float, float) | Full trajectory as [(azimuth, elevation), ...] for control dish |
-| `pi2_az_ele` | list of (float, float) | Full trajectory for test dish |
+| `pi1_az_ele` | list of (float, float) | Full trajectory as [(elevation, azimuth), ...] for control dish |
+| `pi2_az_ele` | list of (float, float) | Full trajectory as [(elevation, azimuth), ...] for test dish |
 
 **Load with:** `read_sat_match_data(start_date, end_date)` in `../code/data_loading.py`
 
